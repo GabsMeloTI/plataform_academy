@@ -1,0 +1,4 @@
+
+- criar struct através do make (nomeclatura padrão)
+
+- criar funções de GET/POST/PUT/DELETE de forma padrão, pegando o retorno da repository e model
