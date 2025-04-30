@@ -28,6 +28,7 @@ jobs:
             git config --global --add safe.directory /home/projects/osrm-teste/osrm_br
           
             echo "Acessando diretório do projeto..."
+            sudo su
             cd /home/projects/osrm-teste/osrm_br
           
             echo "Atualizando código..."
