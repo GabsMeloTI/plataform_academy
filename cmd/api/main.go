@@ -38,6 +38,7 @@ func main() {
 
 	user := e.Group("/user")
 	user.POST("/create", container.UserHandler.CreateUser)
+	user.POST("/login", container.UserHandler.Login)
 
 	e.Logger.Fatal(e.Start(container.Config.ServerPort))
 }
