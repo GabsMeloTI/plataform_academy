@@ -20,8 +20,6 @@ type User struct {
 	Weight      float64   `gorm:"type:decimal(5,2)" json:"weight,omitempty"`
 	Height      float64   `gorm:"type:decimal(3,2)" json:"height,omitempty"`
 	Avatar      *string   `gorm:"type:varchar(255)" json:"avatar,omitempty"`
-	//TrainerID   *uuid.UUID `gorm:"column:trainer_id" json:"trainer_id,omitempty"`
-	//Trainer     *User      `gorm:"foreignKey:TrainerID;constraint:OnDelete:SET NULL" json:"trainer,omitempty"`
 }
 
 type CreateUser struct {
