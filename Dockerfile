@@ -7,11 +7,19 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod tidy
 
-# Copiar o código-fonte
+# Copiar todo o código-fonte, incluindo o diretório cmd
 COPY . .
 
-# Compilar o binário a partir do arquivo main.go em ./cmd/main.go
-RUN go build -o main ./cmd/main.go
+# Compilar o binário (certifique-se de que o caminho está correto)
+RUN CGO_ENABLED=0 GOOS=linux go build -o main ./cmd/main.go
+
+# Etapa final
+FROM alpine:latest
+
+WORKDIR /root/
+
+# Copiar o binário compilado
+COPY --from=builder /app/main .
 
 # Expor a porta que o aplicativo utilizará
 EXPOSE 8080
