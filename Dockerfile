@@ -11,7 +11,7 @@ RUN go mod tidy
 COPY . .
 
 # Compilar o binário (certifique-se de que o caminho está correto)
-RUN CGO_ENABLED=0 GOOS=linux go build -o main ./cmd/main.go
+RUN CGO_ENABLED=0 GOOS=linux go build -o main ./cmd/api/main.go
 
 # Etapa final
 FROM alpine:latest
