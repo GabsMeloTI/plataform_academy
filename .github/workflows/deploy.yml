@@ -34,7 +34,7 @@ jobs:
             set -e
 
             echo "Acessando diretório do projeto..."
-            cd /home/projects/osrm-teste/osrm_br
+            cd /home/ubuntu/plataform_academy
 
             echo "Atualizando código..."
             git fetch --all
