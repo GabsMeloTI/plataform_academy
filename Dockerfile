@@ -1,18 +1,28 @@
+# Etapa de build
 FROM golang:1.22.2-alpine AS builder
 
 WORKDIR /app
 
-COPY go.mod ./
-COPY go.sum ./
+# Copiar arquivos de dependências
+COPY go.mod go.sum ./
 RUN go mod tidy
 
+# Copiar o código-fonte
 COPY . .
 
-RUN go build -o main
+# Compilar o binário
+RUN CGO_ENABLED=0 GOOS=linux go build -o app ./cmd/main.go
 
-RUN whoami
-RUN id
+# Etapa final
+FROM alpine:latest
 
+WORKDIR /root/
+
+# Copiar o binário compilado
+COPY --from=builder /app/app .
+
+# Expor a porta que o aplicativo utilizará
 EXPOSE 8080
 
-CMD ["./main"]
+# Comando para iniciar o aplicativo
+CMD ["./app"]
