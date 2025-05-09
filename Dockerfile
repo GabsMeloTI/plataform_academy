@@ -10,19 +10,11 @@ RUN go mod tidy
 # Copiar o código-fonte
 COPY . .
 
-# Compilar o binário
-RUN CGO_ENABLED=0 GOOS=linux go build -o app ./cmd/main.go
-
-# Etapa final
-FROM alpine:latest
-
-WORKDIR /root/
-
-# Copiar o binário compilado
-COPY --from=builder /app/app .
+# Compilar o binário a partir do arquivo main.go em ./cmd/main.go
+RUN go build -o main ./cmd/main.go
 
 # Expor a porta que o aplicativo utilizará
 EXPOSE 8080
 
 # Comando para iniciar o aplicativo
-CMD ["./app"]
+CMD ["./main"]
