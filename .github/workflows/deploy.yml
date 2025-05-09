@@ -49,7 +49,7 @@ jobs:
             docker ps -a -q -f name=go-fit-container && docker rm go-fit-container || true
 
             echo "Executando novo container..."
-            docker run -d -p 8080:8080 --env-file .env --name go-fit-container go-app
+            docker run -d -p 8080:8080 --env-file cmd/api/.env --name go-fit-container go-app
 
             echo "Limpando imagens antigas..."
             docker image prune -f
