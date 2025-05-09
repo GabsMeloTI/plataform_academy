@@ -34,7 +34,7 @@ jobs:
             set -e
 
             echo "Acessando diretório do projeto..."
-            cd /home/ubuntu/plataform_academy || git clone git@github.com:GabsMeloTI/plataform_academy.git /home/ubuntu/plataform_academy
+            cd /home/ubuntu/project/plataform_academy
 
             echo "Atualizando código..."
             git fetch --all
