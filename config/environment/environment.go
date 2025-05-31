@@ -25,8 +25,8 @@ type Config struct {
 func NewConfig() Config {
 	if os.Getenv("ENVIRONMENT") == "" {
 		if err := godotenv.Load(".env"); err != nil {
-			panic("Error loading env file")
 			fmt.Println(err)
+			panic("Error loading env file")
 		}
 	}
 	return Config{
