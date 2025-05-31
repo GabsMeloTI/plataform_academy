@@ -23,7 +23,7 @@ type Config struct {
 
 func NewConfig() Config {
 	if os.Getenv("ENVIRONMENT") == "" {
-		if err := godotenv.Load("cmd/api/.env"); err != nil {
+		if err := godotenv.Load(".env"); err != nil {
 			panic("Error loading env file")
 		}
 	}
