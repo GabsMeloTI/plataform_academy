@@ -1,6 +1,7 @@
 package environment
 
 import (
+	"fmt"
 	"github.com/joho/godotenv"
 	"os"
 )
@@ -25,6 +26,7 @@ func NewConfig() Config {
 	if os.Getenv("ENVIRONMENT") == "" {
 		if err := godotenv.Load(".env"); err != nil {
 			panic("Error loading env file")
+			fmt.Println(err)
 		}
 	}
 	return Config{
